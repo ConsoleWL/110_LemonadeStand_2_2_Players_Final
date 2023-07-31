@@ -25,6 +25,7 @@ namespace LemonadeStand
             GenerateTemperature();
         }
 
+        // SRP . Only Generating Weather
         public void GenerateTemperature()
         {
             int number = UserInterface.GenerateRandom1to9();
@@ -56,6 +57,7 @@ namespace LemonadeStand
             }
         }
 
+        // SRP . Only DisplayingTemperature
         public void DisplayTemperature()
         {
             Console.WriteLine($"\nToday's forecast prediction: {predictedForecast}");

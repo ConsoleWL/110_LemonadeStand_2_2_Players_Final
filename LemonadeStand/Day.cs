@@ -16,12 +16,13 @@ namespace LemonadeStand
             customers = new List<Customer>();
             GenerateCustomers();
         }
+        // This is a SRP in here . Only Calling Methods in here
         public void GenerateCustomers()
         {
             int result = CheckingTheWeather();
             CreatingCustomers(result);
         }
-
+        // This is a SRP in here . Only checking the weather
         public int CheckingTheWeather()
         {
             switch (weather.condition)
@@ -37,6 +38,7 @@ namespace LemonadeStand
             }
         }
 
+        // This is a SRP in here . Only Creating a custommer
         public void CreatingCustomers(int number)
         {
             for (int i = 0; i <= number; i++)

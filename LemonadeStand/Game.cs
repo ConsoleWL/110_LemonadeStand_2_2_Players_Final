@@ -33,6 +33,7 @@ namespace LemonadeStand
             playerWinner = new Player();
         }
 
+        // SRP . Only Setting number of players
         public int NumberOfPlayers()
         {
             while (true)
@@ -59,6 +60,7 @@ namespace LemonadeStand
             }
         }
 
+        // SRP . Only Creating players
         public void GeneratePlayers(int numberOfPlayers)
         {
             for (int i = 1; i <= numberofPlayers; i++)
@@ -79,6 +81,7 @@ namespace LemonadeStand
             }
         }
 
+        // SRP. Only Creating Players
         public void DisplayPlayers()
         {
             Console.WriteLine("\nList of players:");
@@ -89,6 +92,7 @@ namespace LemonadeStand
             }
         }
 
+        // SRP. Welcome method only
         public void Welcome()
         {
             Console.WriteLine("\nWelcome to Lemonade Stand!");
@@ -97,13 +101,14 @@ namespace LemonadeStand
             Console.WriteLine("Can you make the big bucks");
             Console.WriteLine("Player with the biggest stack wins");
         }
-
+        // SRP.  Day anouncment
         public void AnounceStartOftheDay()
         {
             Console.WriteLine("_________________________________________________");
             Console.WriteLine($"\nDay {currentDay} begins!");
         }
 
+        // SRP Changing the weather
         public void WeatherChanger()
         {
             int changeWeather = UserInterface.GenerateRandom1to9();
@@ -164,11 +169,13 @@ namespace LemonadeStand
             AnounceEndOftheDay();
         }
 
+        // SRP. Only Displaying weather after it was changed or not changed
         public void DisplayActualWether()
         {
             Console.WriteLine($"\nActual weather was {days[currentDay - 1].weather.condition}, Temperature: {days[currentDay - 1].weather.temperature} C");
         }
-
+        
+        // SRP 
         public void DisplayTheResultsOfTheDay()
         {
             for (int i = 0; i < players.Count; i++)
@@ -177,6 +184,7 @@ namespace LemonadeStand
             }
         }
 
+        // SRP only anouncing that the day  is over
         public void AnounceEndOftheDay()
         {
             Console.WriteLine($"\nDay {currentDay} is over! ");
@@ -191,6 +199,7 @@ namespace LemonadeStand
             DisplayTheWinner();
         }
 
+        // SRP only Displaying How much all players made $
         public void DisplayGameResultsOfAllPlayers()
         {
             Console.WriteLine();
@@ -200,7 +209,7 @@ namespace LemonadeStand
                 Console.WriteLine($"{players[i].name} made: ${players[i].wallet.Money}");
             }
         }
-
+        // SRP only determine the winner
         public void DetermineTheWinner()
         {
             for (int i = 1; i < players.Count; i++)
@@ -213,6 +222,7 @@ namespace LemonadeStand
             }
         }
 
+        // SRP only displaying the winner
         public void DisplayTheWinner()
         {
             Console.WriteLine($"\nThe winner is {playerWinner.name}!!!");
@@ -243,7 +253,7 @@ namespace LemonadeStand
                 CloseTheDay();
             }
         }
-
+        // SRP. Method that call other methods only
         public void RunGame()
         {
             NumberOfPlayers();
