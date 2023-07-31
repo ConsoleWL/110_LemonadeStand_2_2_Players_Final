@@ -89,6 +89,51 @@ namespace LemonadeStand
             }
         }
 
+        public void Welcome()
+        {
+            Console.WriteLine("\nWelcome to Lemonade Stand!");
+            Console.WriteLine("You have 7 days to make as much money as you can.");
+            Console.WriteLine("The weather, along with your pricing, can affect your success.");
+            Console.WriteLine("Can you make the big bucks");
+            Console.WriteLine("Player with the biggest stack wins");
+        }
+
+        public void AnounceStartOftheDay()
+        {
+            Console.WriteLine("_________________________________________________");
+            Console.WriteLine($"\nDay {currentDay} begins!");
+        }
+
+        public void WeatherChanger()
+        {
+            int changeWeather = UserInterface.GenerateRandom1to9();
+            if (changeWeather < 3)
+            {
+                //then well change it
+                if (days[currentDay - 1].weather.condition == "perfect")
+                {
+                    days[currentDay - 1].weather.condition = "bad";
+                    days[currentDay - 1].weather.temperature = 50;
+                    days[currentDay - 1].weather.predictedForecast = days[currentDay - 1].weather.weatherConditions[2];
+                    days[currentDay - 1].weather.isWeatherChanged = true;
+                }
+                else if (days[currentDay - 1].weather.condition == "bad")
+                {
+                    days[currentDay - 1].weather.condition = "perfect";
+                    days[currentDay - 1].weather.temperature = 80;
+                    days[currentDay - 1].weather.predictedForecast = days[currentDay - 1].weather.weatherConditions[2];
+                    days[currentDay - 1].weather.isWeatherChanged = true;
+                }
+                else
+                {
+                    days[currentDay - 1].weather.condition = "perfect";
+                    days[currentDay - 1].weather.temperature = 80;
+                    days[currentDay - 1].weather.predictedForecast = days[currentDay - 1].weather.weatherConditions[2];
+                    days[currentDay - 1].weather.isWeatherChanged = true;
+                }
+            }
+        }
+
         public void RunGame()
         {
             NumberOfPlayers();
