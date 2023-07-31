@@ -123,5 +123,23 @@ namespace LemonadeStand
                 wallet.profit += recipe.price;
             }
         }
+
+        public void CloseTheStand()
+        {
+            CalculateProfitLoss();
+            ResetTheDay();
+        }
+
+        public void CalculateProfitLoss()
+        {
+            balanceaAtertheday = wallet.Money - balanceBeforeday;
+            Console.WriteLine($"Player: {name} | Drinks sold {drinksSold} | Drinks left: {drinksAvailable} | Profit for the day: ${Math.Round(balanceaAtertheday, 2)}");
+        }
+        public void ResetTheDay()
+        {
+            drinksSold = 0;
+            drinksAvailable = 0;
+            balanceBeforeday = wallet.Money;
+        }
     }
 }
