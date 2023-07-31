@@ -12,6 +12,11 @@ namespace LemonadeStand
         public Inventory inventory;
         public Wallet wallet;
         public Recipe recipe;
+        public string name;
+        internal int drinksAvailable;
+        internal int drinksSold;
+        internal double balanceBeforeday;
+        internal double balanceaAtertheday;
 
         // constructor (SPAWNER)
         public Player()
@@ -19,6 +24,10 @@ namespace LemonadeStand
             inventory = new Inventory();
             wallet = new Wallet();
             recipe = new Recipe();
+            name = "Player";
+            drinksAvailable = 0;
+            drinksSold = 0;
+            balanceBeforeday = wallet.Money;
         }
 
         // member methods (CAN DO)
