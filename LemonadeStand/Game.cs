@@ -183,6 +183,41 @@ namespace LemonadeStand
             Console.WriteLine("_________________________________________________");
             currentDay++;
         }
+
+        public void GameResuts()
+        {
+            DisplayGameResultsOfAllPlayers();
+            DetermineTheWinner();
+            DisplayTheWinner();
+        }
+
+        public void DisplayGameResultsOfAllPlayers()
+        {
+            Console.WriteLine();
+
+            for (int i = 0; i < players.Count; i++)
+            {
+                Console.WriteLine($"{players[i].name} made: ${players[i].wallet.Money}");
+            }
+        }
+
+        public void DetermineTheWinner()
+        {
+            for (int i = 1; i < players.Count; i++)
+            {
+                playerWinner = players[0];
+                if (playerWinner.wallet.Money < players[i].wallet.Money)
+                {
+                    playerWinner = players[i];
+                }
+            }
+        }
+
+        public void DisplayTheWinner()
+        {
+            Console.WriteLine($"\nThe winner is {playerWinner.name}!!!");
+        }
+
         public void RunGame()
         {
             NumberOfPlayers();
