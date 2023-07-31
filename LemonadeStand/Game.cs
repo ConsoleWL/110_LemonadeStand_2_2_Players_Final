@@ -59,9 +59,41 @@ namespace LemonadeStand
             }
         }
 
+        public void GeneratePlayers(int numberOfPlayers)
+        {
+            for (int i = 1; i <= numberofPlayers; i++)
+            {
+                Console.WriteLine($"\nEnter a name for player {i}");
+                string name = Console.ReadLine();
+
+                if (name == "" || name == " " || name == "  ")
+                {
+                    players.Add(new Player());
+                    players[i - 1].name = $"Player {i}";
+                }
+                else
+                {
+                    players.Add(new Player());
+                    players[i - 1].name = name;
+                }
+            }
+        }
+
+        public void DisplayPlayers()
+        {
+            Console.WriteLine("\nList of players:");
+
+            for (int i = 0; i < players.Count; i++)
+            {
+                Console.WriteLine($"Player {i + 1}: {players[i].name}");
+            }
+        }
+
         public void RunGame()
         {
-
+            NumberOfPlayers();
+            GeneratePlayers(numberofPlayers);
+            DisplayPlayers();
         }
     }
 }
