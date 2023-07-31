@@ -50,5 +50,30 @@ namespace LemonadeStand
             Console.WriteLine($"Iventory: {inventory.iceCubes.Count} ice cubes");
             Console.WriteLine($"Iventory: {inventory.cups.Count} cups\n");
         }
+
+        public void DrinkPreperation()
+        {
+            recipe.ChangeRecipe();
+            MakeAPitcher(UserInterface.GetNumberOfPitchers());
+        }
+        public void MakeAPitcher(int amountOfPitchers)
+        {
+            int lemonsForPitcher = recipe.numberOfLemons * amountOfPitchers;
+            int sugarForPitcher = recipe.numberOfSugarCubes * amountOfPitchers;
+            int iceForPitcher = recipe.numberOfIceCubes * amountOfPitchers;
+
+            try
+            {
+                inventory.lemons.RemoveRange(0, lemonsForPitcher);
+                inventory.sugarCubes.RemoveRange(0, sugarForPitcher);
+                inventory.iceCubes.RemoveRange(0, iceForPitcher);
+
+                drinksAvailable = 8 * amountOfPitchers;
+            }
+            catch (Exception)
+            {
+                Console.WriteLine($"You dont have enough items");
+            }
+        }
     }
 }
