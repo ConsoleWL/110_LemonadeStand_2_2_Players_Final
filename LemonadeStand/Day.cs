@@ -14,6 +14,35 @@ namespace LemonadeStand
         {
             weather = new Weather();
             customers = new List<Customer>();
+            GenerateCustomers();
+        }
+        public void GenerateCustomers()
+        {
+            int result = CheckingTheWeather();
+            CreatingCustomers(result);
+        }
+
+        public int CheckingTheWeather()
+        {
+            switch (weather.condition)
+            {
+                case "perfect":
+                    return 100;
+                case "good":
+                    return 60;
+                case "bad":
+                    return 30;
+                default:
+                    return 0;
+            }
+        }
+
+        public void CreatingCustomers(int number)
+        {
+            for (int i = 0; i <= number; i++)
+            {
+                customers.Add(new Customer());
+            }
         }
     }
 }
