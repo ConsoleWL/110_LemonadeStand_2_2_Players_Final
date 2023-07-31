@@ -75,5 +75,53 @@ namespace LemonadeStand
                 Console.WriteLine($"You dont have enough items");
             }
         }
+
+        public void Sell()
+        {
+            bool result = CheckingItemsExitsForSale();
+            SellingADrink(result);
+            Cashier(result);
+        }
+
+        public bool CheckingItemsExitsForSale()
+        {
+            if (drinksAvailable > 0)
+            {
+                if (inventory.cups.Count > 0)
+                {
+                    return true;
+                }
+                else
+                {
+                    Console.WriteLine($"{name} run out of cups....");
+                    return false;
+                }
+            }
+            else
+            {
+                Console.WriteLine($"{name} Sold out!");
+                return false;
+            }
+        }
+
+        public void SellingADrink(bool selling)
+        {
+            if (selling)
+            {
+                Console.WriteLine($"{name} sold a cup of {recipe.name} for ${recipe.price}");
+                inventory.cups.RemoveAt(0);
+            }
+        }
+
+        public void Cashier(bool selling)
+        {
+            if (selling)
+            {
+                drinksAvailable--;
+                drinksSold++;
+                wallet.AcceptMoney(recipe.price);
+                wallet.profit += recipe.price;
+            }
+        }
     }
 }
