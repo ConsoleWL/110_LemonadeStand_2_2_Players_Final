@@ -218,12 +218,40 @@ namespace LemonadeStand
             Console.WriteLine($"\nThe winner is {playerWinner.name}!!!");
         }
 
+        public void GameSimulation()
+        {
+            while (currentDay < 8)
+            {
+                AnounceStartOftheDay();
+
+                days[currentDay - 1].weather.DisplayTemperature();
+
+                WeatherChanger();
+
+                for (int i = 0; i < players.Count; i++)
+                {
+                    Console.WriteLine($"\nPlayer #{i + 1}");
+                    players[i].OpenTheStand();
+                    store.DisplayStorePrices();
+                    store.SellItems(players[i]);
+
+                    players[i].DrinkPreperation();
+                }
+
+                CustomerPurchase();
+
+                CloseTheDay();
+            }
+        }
+
         public void RunGame()
         {
             NumberOfPlayers();
             GeneratePlayers(numberofPlayers);
             DisplayPlayers();
             Welcome();
+            GameSimulation();
+            GameResuts();
         }
     }
 }
