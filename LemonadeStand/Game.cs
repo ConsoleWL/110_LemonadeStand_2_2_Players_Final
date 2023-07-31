@@ -134,11 +134,35 @@ namespace LemonadeStand
             }
         }
 
+        public void CustomerPurchase()
+        {
+            for (int j = 0; j < players.Count; j++)
+            {
+                Console.WriteLine($"\tPlayer {players[j].name} is selling...");
+
+                for (int i = 0; i < days[currentDay - 1].customers.Count - 1; i++)
+                {
+                    bool result = days[currentDay - 1].customers[i].Purchase(players[j], players[j].recipe, days[currentDay - 1].weather.condition);
+
+                    if (result == true)
+                    {
+                        players[j].Sell();
+                    }
+                    else
+                    {
+                        Console.WriteLine("Customer pass by......");
+                    }
+                }
+                Console.WriteLine();
+            }
+        }
+
         public void RunGame()
         {
             NumberOfPlayers();
             GeneratePlayers(numberofPlayers);
             DisplayPlayers();
+            Welcome();
         }
     }
 }
