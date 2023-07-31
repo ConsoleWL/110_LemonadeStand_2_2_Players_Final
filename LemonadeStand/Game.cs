@@ -157,6 +157,32 @@ namespace LemonadeStand
             }
         }
 
+        public void CloseTheDay()
+        {
+            DisplayActualWether();
+            DisplayTheResultsOfTheDay();
+            AnounceEndOftheDay();
+        }
+
+        public void DisplayActualWether()
+        {
+            Console.WriteLine($"\nActual weather was {days[currentDay - 1].weather.condition}, Temperature: {days[currentDay - 1].weather.temperature} C");
+        }
+
+        public void DisplayTheResultsOfTheDay()
+        {
+            for (int i = 0; i < players.Count; i++)
+            {
+                players[i].CloseTheStand();
+            }
+        }
+
+        public void AnounceEndOftheDay()
+        {
+            Console.WriteLine($"\nDay {currentDay} is over! ");
+            Console.WriteLine("_________________________________________________");
+            currentDay++;
+        }
         public void RunGame()
         {
             NumberOfPlayers();
